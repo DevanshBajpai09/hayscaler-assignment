@@ -19,7 +19,6 @@ router.delete("/:leaveId", deleteLeave)
 router.get("/user/:userId", getUserLeaves)
 
 
-router.get("/pending", getPendingLeaves)
 
 router.get("/all", getAllLeaves)
 
