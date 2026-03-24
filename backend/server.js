@@ -1,26 +1,41 @@
-import express from "express"
-import cors from "cors"
-import dotenv from "dotenv"
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-import connectDB from "./config/db.js"
-import authRoutes from "./routes/auth.js"
-import leaveRoutes from "./routes/leave.js"
-import dashboardRoutes from "./routes/dashboard.js"
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/auth.js";
+import leaveRoutes from "./routes/leave.js";
+import dashboardRoutes from "./routes/dashboard.js";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-connectDB()
+// Connect Database
+connectDB();
 
-app.use("/api/auth",authRoutes)
-app.use("/api/leave",leaveRoutes)
+// Root Route (to check if server works)
+app.get("/", (req, res) => {
+  res.send("Backend API is running 🚀");
+});
 
-app.use("/api/dashboard",dashboardRoutes)
+// API Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/leave", leaveRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
-app.listen(5000,()=>{
- console.log("Server running on port 5000")
-})
+// Health check route (optional but useful)
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "Server running successfully" });
+});
+
+// Render requires dynamic port
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
