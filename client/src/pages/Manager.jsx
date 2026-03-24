@@ -190,7 +190,7 @@ export default function Manager() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const user = JSON.parse(localStorage.getItem("user") || '{"name":"John Doe","role":"HR Manager"}');
@@ -254,7 +254,7 @@ export default function Manager() {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-medium text-gray-900">{user.name || "John Doe"}</p>
-                <p className="text-xs text-gray-500">{user.role || "HR Manager"}</p>
+                <p className="text-xs text-gray-500">{user?.role || "HR Manager"}</p>
               </div>
               <button 
                 onClick={handleLogout}
