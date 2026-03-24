@@ -196,6 +196,23 @@ GET /api/dashboard/:userId
 
 ---
 
+
+
+## 🔑 Demo Login Credentials
+
+You can use the following demo accounts to test the application.
+
+### 👤 Employee Login
+Email: `devansh@test.com`  
+Password: `123456`
+
+### 👨‍💼 Manager Login
+Email: `manager@test.com`  
+Password: `123456`
+
+
+
+
 ## 🌍 Deployment
 
 Frontend deployed on **Vercel**
